@@ -1,11 +1,11 @@
-Question1 -
+#Question1 -
 
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: sample-app
 spec:
-  replicas: 3  ----> no. of replicas for high availability
+  replicas: 3                     #no. of replicas for high availability
   selector:
     matchLabels:
       app: sample-app
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: web
-        image: nginx:latest  ----> image name
+        image: nginx:latest     #image name
         ports:
         - containerPort: 80
 
@@ -32,7 +32,7 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 80
-  type: ClusterIP  ----> service type
+  type: ClusterIP      #service type
 
 ---
 apiVersion: apps/v1
@@ -48,17 +48,17 @@ spec:
     metadata:
       labels:
         app: sample-app
-        version: "2.0"  ----> Update the version label to trigger a rollout
+        version: "2.0"  #Update the version label to trigger a rollout
     spec:
       containers:
       - name: web
-        image: nginx:1.17  ----> You can change this to the updated image
+        image: nginx:1.17  #You can change this to the updated image
         ports:
         - containerPort: 80
 
 
-=========================================================================================================================
-Question 2->
+#=========================================================================================================================
+#Question 2->
 
 
 # main.tf
@@ -118,7 +118,7 @@ region            = "your-region"
 topic_name        = "your-topic-name"
 credentials_file  = "path/to/your/credentials.json"
 
-To apply the Terraform configuration, run the below commands:
+#To apply the Terraform configuration, run the below commands:
 
 terraform init
 terraform apply
